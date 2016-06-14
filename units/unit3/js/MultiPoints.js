@@ -5,10 +5,10 @@ console.log(week, new Date().getMonth()+1,new Date().getDate());
 // 顶点着色器程序
 var VSHADER_SOURCE =
     'attribute vec4 a_Position;\n' +
-    'attribute float a_PointSize;\n' +
+    // 'attribute float a_PointSize;\n' +
     'void main() {\n' +
     ' gl_Position = a_Position;\n' + // 设置坐标
-    ' gl_PointSize = a_PointSize;\n' + // 设置尺寸
+    ' gl_PointSize = 10.0;\n' + // 设置尺寸
     '}\n';
 
 // 片元着色器程序
@@ -104,10 +104,10 @@ function initVertexBuffers(gl) {
         return;
     }
 
-    // 将缓冲区对象分配给a_Position变量
+    // 将缓冲区对象分配给 a_Position 变量
     gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
 
-    // 链接a_Position 变量与分配给他的缓冲区对象
+    // 链接 a_Position 变量与分配给他的缓冲区对象
     gl.enableVertexAttribArray(a_Position);
 
     return n;
