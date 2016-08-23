@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>WebGL Unit 3</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script>
+        var isLocal = (location.href.indexOf('localhost') != -1) || (location.href.indexOf('192.168') != -1);
+        var files;
+
+        if(isLocal){
+            files = [
+                "js/webgl-utils.js",
+				"js/webgl-debug.js",
+				"js/cuon-utils.js",
+                "js/HelloTriangle.js"
+            ];
+        }else{
+            files = [
+                "js/webgl-utils.js",
+				"js/webgl-debug.js",
+				"js/cuon-utils.js",
+                "js/HelloTriangle.js"
+            ];
+        }
+
+        var i = 0;
+        var loadJS = function() {
+            var extJavascript = document.createElement('script');
+            if (i < files.length - 1) {
+                extJavascript.onload = function() {
+                    loadJS();
+                }
+            } else {
+                extJavascript.onload = function() {
+                    main();
+                }
+            }
+            extJavascript.setAttribute('type', 'text/javascript');
+            extJavascript.setAttribute('src', files[i]);
+            document.getElementsByTagName('head')[0].appendChild(extJavascript);
+            i++;
+        }
+        loadJS();
+    </script>
+</head>
+<body>
+	<canvas id="webgl" width="400" height="400">
+		Please use the browser supporting "canvas"
+	</canvas>
+</body>
+</html>
